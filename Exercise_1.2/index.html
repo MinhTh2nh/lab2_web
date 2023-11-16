@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Exercise 1.2</h2>
+    <div style="text-align: center;justify-content: center;height: 400px;font-size: 30px;">
+        <p>Click to Generate new random string</p>
+        <button class="btn" id="generate-string" style="
+        padding: 5px;
+        margin-left: 10px;
+        background-color: beige;
+        ">Generate String</button>
+
+        <p id="myText"></p>
+        <button onclick="copyContent()" style="
+        padding: 5px;
+        margin-left: 10px;
+        background-color: beige;
+        ">Copy</button>
+        <script>
+            let text = document.querySelector('#myText');
+            let generateStringBtn = document.querySelector('#generate-string');
+            generateStringBtn.addEventListener('click', () => {
+                let randomString = generateRandomString(10);
+                text.textContent = randomString;
+            });
+
+            const copyContent = async () => {
+                try {
+                    navigator.clipboard.writeText(text.textContent);
+                    console.log('Copy a string to the clipboard: ', text.textContent);
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            }
+
+            const generateRandomString = (length) => {
+                const characters = '0123456789';
+                let result = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * characters.length);
+                    result += characters.charAt(randomIndex);
+                }
+                return result;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

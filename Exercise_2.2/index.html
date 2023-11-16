@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Exercise 2.2</h2>
+    <div style="
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        height: 400px;
+        align-content: center;
+        align-items: center;
+        font-size: 30px;
+      ">
+        <form action="#" id="myForm">
+            <input type="text" name="name" id="name" placeholder="Name" />
+            <input type="date" name="dob" id="dob" placeholder="Date of birth" />
+            <button onclick="myFunction()" class="btn">Submit</button>
+        </form>
+        <script>
+            const myFunction = () => {
+                const form = document.getElementById("myForm");
+                const formData = new FormData(form);
+
+                // Get values from FormData
+                const nameValue = formData.get("name");
+                const dobValue = formData.get("dob");
+
+                const btn = document.querySelector(".btn");
+                const submitValue = btn.value;
+
+                btn.textContent = "Submitted";
+                btn.style.backgroundColor = "red";
+                // Use window.confirm instead of alert
+                if (window.confirm("Submit button pressed. Values: \nName: " + nameValue + "\nDate of Birth: " + dobValue)) {
+                    // Change the text content of the button to "Submit" after a delay
+                    setTimeout(() => {
+                        btn.textContent = "Submit";
+                        btn.style.backgroundColor = "";
+                    }, 5000);
+                }
+            };
+        </script>
+    </div>
+</body>
+
+</html>
