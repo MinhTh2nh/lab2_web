@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="loadData()">
+    <ul>
+        <li><a href="../Exercise_1.1/index.html">Exercise 1.1</a></li>
+        <li><a href="../Exercise_1.2/index.html">Exercise 1.2</a></li>
+        <li><a href="../Exercise_1.3/index.html">Exercise 1.3</a></li>
+        <li><a href="../Exercise_2.1/index.html">Exercise 2.1</a></li>
+        <li><a href="../Exercise_2.2/index.html">Exercise 2.2</a></li>
+        <li><a href="../Exercise_2.3/index.html">Exercise 2.3</a></li>
+        <li><a href="../Exercise_3.1/index.html">Exercise 3.1</a></li>
+        <li><a href="../Exercise_3.2Cavas/index.html">Exercise 3.2</a></li>
+        <li><a href="../HomeWork_2.1/index.html">HW 2.1 Drum Kit</a></li>
+        <li><a href="../HomeWork_2.3/index.html">HW 2.3</a></li>
+    </ul>
+    <button id="btnControl" onclick="control()">Start</button>
+    <p id="counter"></p>
+    <ul></ul>
+    <div></div>
+
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ul>
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+    </ul>
+    <ul>
+      <li>👻</li>
+      <li>👽</li>
+      <li>🦁</li>
+    </ul>
+
+    <div id="list-app"></div>
+    <div>
+      <h2>Add and Reset internal JS 2</h2>
+      <button onclick="increaseOne()">Add 1</button>
+      <button onclick="resetCount()">Reset</button>
+      <p id="result">0</p>
+    </div>
+  </body>
+  <script>
+    let counterElement = document.getElementById("counter");
+    let controlElement = document.getElementById("btnControl");
+    let counter = 0;
+    let intervalId = 0;
+
+    function increaseCounter() {
+      counter++;
+      counterElement.innerText = counter;
+    }
+    // 1st
+    function control() {
+      if (controlElement.innerText === "Start") {
+        controlElement.innerText = "Pause";
+        counter = 0;
+        intervalId = setInterval(increaseCounter, 300);
+      } else {
+        controlElement.innerText = "Start";
+        clearInterval(intervalId);
+      }
+    }
+
+    // 2nd
+    function loadData() {
+      const fruitList = ["apple", "banana", "tomato"];
+      //   3rd
+      const ulElement = document.querySelector("ul");
+      const divElement = document.querySelector("div");
+      const imgElement = document.createElement("img");
+      //   4th
+      const firstLis = [...document.querySelectorAll("ul > li:first-child")];
+      const lastLis = [...document.querySelectorAll("ul > li:last-child")];
+
+      imgElement.src = "https://crocoder.dev/icon.png";
+      divElement.appendChild(imgElement);
+
+      fruitList.forEach((fruit) => {
+        const itemElement = document.createElement("li");
+        itemElement.textContent = fruit;
+        ulElement.appendChild(itemElement);
+      });
+
+      firstLis.forEach((li) => (li.textContent = "first"));
+      lastLis.forEach((li) => (li.textContent = "last"));
+    }
+
+    // 5th
+    const app = document.getElementById("list-app");
+
+    const list = document.createElement("ul");
+    const input = document.createElement("input");
+    input.setAttribute("type", "text");
+    const addButton = document.createElement("button");
+    addButton.innerHTML = "Create New";
+
+    addButton.addEventListener("click", function () {
+      const newItem = document.createElement("li");
+      if (input.value === "") {
+        newItem.innerHTML = "New item";
+      } else {
+        newItem.innerHTML = input.value;
+      }
+      list.appendChild(newItem);
+      input.value = "";
+    });
+
+    list.addEventListener("click", function (event) {
+      if (event.target.tagName === "li") {
+        const text = prompt("Enter new text:");
+        event.target.innerHTML = text;
+      }
+    });
+
+    app.appendChild(input);
+    app.appendChild(addButton);
+    app.appendChild(list);
+
+    // 6th
+    let count = 0;
+    function increaseOne() {
+      document.getElementById("result").innerHTML = ++count;
+    }
+    function resetCount() {
+      count = 0;
+      document.getElementById("result").innerHTML = count;
+    }
+  </script>
+</html>

@@ -1,0 +1,37 @@
+body {
+    color: #fff;
+    text-align: center;
+    background-image: url("https://vinyl.lofirecords.com/cdn/shop/files/Lofi-Dontcry169.jpg?v=1695650335");
+    background-size: cover;
+}
+
+.countdown-container {
+    font-family: 'Lobster', sans-serif;   
+    background: #56585a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 46px;
+    font-size: 2.5em;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.box #seconds{
+    color: red;
+}
+.box {
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.5;
+    font-size: 36px;
+}
+
+.backgroud-white{
+    background: white;
+}
